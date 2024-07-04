@@ -208,13 +208,14 @@ impl ArchiveRead<QuaternionKey> for QuaternionKey {
 #[derive(Debug, Default)]
 #[cfg_attr(feature = "rkyv", derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[repr(C)]
 pub struct Animation {
-    duration: f32,
-    num_tracks: usize,
-    name: String,
-    translations: Vec<Float3Key>,
-    rotations: Vec<QuaternionKey>,
-    scales: Vec<Float3Key>,
+    pub duration: f32,
+    pub num_tracks: usize,
+    pub name: String,
+    pub translations: Vec<Float3Key>,
+    pub rotations: Vec<QuaternionKey>,
+    pub scales: Vec<Float3Key>,
 }
 
 /// Animation meta in `Archive`.
