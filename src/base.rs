@@ -177,6 +177,13 @@ impl<'t, T: Debug> OzzObj<T> for &'t T {
     }
 }
 
+impl<T: Debug> OzzObj<T> for *const T {
+    #[inline(always)]
+    fn obj(&self) -> &T {
+        return unsafe { &**self };
+    }
+}
+
 impl<T: Debug> OzzObj<T> for Rc<T> {
     #[inline(always)]
     fn obj(&self) -> &T {
