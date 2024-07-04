@@ -80,10 +80,10 @@ const _: () = {
 #[cfg_attr(feature = "rkyv", derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Skeleton {
-    joint_rest_poses: Vec<SoaTransform>,
-    joint_parents: Vec<i16>,
+    pub joint_rest_poses: Vec<SoaTransform>,
+    pub joint_parents: Vec<i16>,
     #[cfg_attr(feature = "rkyv", with(JointHashMapWrapper))]
-    joint_names: JointHashMap,
+    pub joint_names: JointHashMap,
 }
 
 /// Skeleton meta in `Archive`.
